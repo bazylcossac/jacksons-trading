@@ -1,11 +1,11 @@
-import js from '@eslint/js';
+import pluginReact, { rules } from 'eslint-plugin-react';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
-import pluginReact, { rules } from 'eslint-plugin-react';
 
+import js from '@eslint/js';
+import pluginPrettier from 'eslint-plugin-prettier';
 import { defineConfig } from 'eslint/config';
 import prettier from 'eslint-config-prettier';
-import pluginPrettier from 'eslint-plugin-prettier';
 
 export default defineConfig([
   {
@@ -20,16 +20,6 @@ export default defineConfig([
     rules: {
       'react/react-in-jsx-scope': 'off',
       'prettier/prettier': 'error',
-      'sort-imports': [
-        'error',
-        {
-          ignoreCase: false,
-          ignoreDeclarationSort: false,
-          ignoreMemberSort: false,
-          memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
-          allowSeparatedGroups: false,
-        },
-      ],
     },
   },
 ]);

@@ -1,3 +1,4 @@
+import LoginForm from '@/components/app/login/LoginForm';
 import LoginImage from '@/components/app/login/LoginImage';
 
 const LoginPage = () => {
@@ -5,7 +6,7 @@ const LoginPage = () => {
     <div className="bg-white w-full h-screen text-black flex p-2">
       <LoginImage />
 
-      <div>form</div>
+      <LoginForm />
     </div>
   );
 };
