@@ -2,7 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import { ThemeProvider } from "next-themes";
-import I18nProvider from "../components/app/I18nProvider";
+
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -27,7 +27,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${roboto.variable} ${robotoMono.variable} antialiased`}>
-        <I18nProvider>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -36,7 +35,6 @@ export default function RootLayout({
           >
             {children}
           </ThemeProvider>
-        </I18nProvider>
       </body>
     </html>
   );
