@@ -1,22 +1,16 @@
-import "./globals.css";
-import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
-import { ThemeProvider } from "next-themes";
+import './globals.css';
+import type { Metadata } from 'next';
+import { Rubik } from 'next/font/google';
+import { ThemeProvider } from 'next-themes';
 
-
-const roboto = Roboto({
-  variable: "--font-roboto",
-  subsets: ["latin"],
-});
-
-const robotoMono = Roboto({
-  variable: "--font-roboto",
-  subsets: ["latin"],
+const rubik = Rubik({
+  variable: '--font-rubik',
+  subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
-  title: "Jackson's Trading",
-  description: "Jackson's Trading",
+  title: "Jackson's Trading Platform",
+  description: "Jackson's Trading Platform",
 };
 
 export default function RootLayout({
@@ -26,15 +20,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${roboto.variable} ${robotoMono.variable} antialiased`}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-          </ThemeProvider>
+      <body className={`${rubik.variable} antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
