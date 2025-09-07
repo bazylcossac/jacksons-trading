@@ -1,23 +1,23 @@
 import { Input } from "@/components/ui/input";
-import { Control, useController } from "react-hook-form";
-import LoginPasswordHoverCard from "./LoginPasswordHoverCard";
+import { Control, FieldValues, Path, useController } from "react-hook-form";
+import PasswordHoverCard from "./PasswordHoverCard";
 
-type LoginPasswordInput = {
-  control: Control<{ email: string; password: string; rememberMe: boolean }>;
+type PasswordInput<T extends FieldValues> = {
+  control: Control<T>;
 };
 
-const LoginPasswordInput = ({ control }: LoginPasswordInput) => {
+const PasswordInput = <T extends FieldValues>({ control }: PasswordInput<T>) => {
   const {
     field,
     fieldState: { error },
-  } = useController({ name: "password", control });
+  } = useController({ name: "password" as Path<T>, control });
 
   return (
     <>
       <div className="relative">
         <Input className="max-w-[280px] pr-10 " placeholder="password" type="password" {...field} />
         <div className="absolute right-2 top-1/2 transform -translate-y-1/2">
-          <LoginPasswordHoverCard value={field.value} />
+          <PasswordHoverCard value={field.value} />
         </div>
       </div>
       {error ? (
@@ -29,4 +29,4 @@ const LoginPasswordInput = ({ control }: LoginPasswordInput) => {
   );
 };
 
-export default LoginPasswordInput;
+export default PasswordInput;

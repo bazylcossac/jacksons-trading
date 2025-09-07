@@ -2,11 +2,11 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/h
 import { cn } from "@/lib/utils";
 import { BsFillInfoSquareFill } from "react-icons/bs";
 
-type LoginPasswordHoverCard = {
+type PasswordHoverCard = {
   value: string;
 };
 
-const LoginPasswordHoverCard = ({ value }: LoginPasswordHoverCard) => {
+const PasswordHoverCard = ({ value }: PasswordHoverCard) => {
   const fiveCharactes = /^.{8,}$/.test(value);
   const oneSpecialCharacter = /^(?=.*[!@#$%^&*])/.test(value);
   const oneUppercaseCharacter = /[A-Z]/.test(value);
@@ -30,4 +30,4 @@ const LoginPasswordHoverCard = ({ value }: LoginPasswordHoverCard) => {
     </HoverCard>
   );
 };
-export default LoginPasswordHoverCard;
+export default PasswordHoverCard;

@@ -1,18 +1,16 @@
 "use client";
-import { Login, LoginSchema } from "@/@types/app/login";
+import { Register, RegisterSchema } from "@/@types/app/register";
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { authClient } from "@/lib/auth-client";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Link from "next/link";
 import { useState } from "react";
-import { Controller, useForm } from "react-hook-form";
-import { FcGoogle as GoogleIcon } from "react-icons/fc";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { SpinnerCircularFixed } from "spinners-react";
 import PasswordInput from "../PasswordInput";
-const LoginForm = () => {
+
+const RegisterForm = () => {
   const [showLoading, setShowLoading] = useState(false);
 
   const {
@@ -21,17 +19,17 @@ const LoginForm = () => {
     control,
     formState: { errors },
   } = useForm({
-    resolver: zodResolver(LoginSchema),
-    defaultValues: { email: "", password: "", rememberMe: false },
+    resolver: zodResolver(RegisterSchema),
+    defaultValues: { email: "", password: "", name: "" },
   });
 
-  const submitAction = async (userData: Login) => {
-    await authClient.signIn.email(
+  const submitAction = async (userData: Register) => {
+    await authClient.signUp.email(
       {
         email: userData.email,
-        password: "testpassword",
+        password: userData.password,
+        name: userData.name,
         callbackURL: "/dashboard",
-        rememberMe: userData.rememberMe,
       },
       {
         onSuccess: () => {
@@ -49,7 +47,7 @@ const LoginForm = () => {
   return (
     <div className="md:w-1/2 flex flex-col text-center items-center justify-center md:pt-0 pt-10">
       <div className="pb-4 space-y-2">
-        <h2 className="text-3xl">Log in</h2>
+        <h2 className="text-3xl">Sign Up</h2>
         <p>Join modern trading platform now.</p>
       </div>
       <form
@@ -67,29 +65,15 @@ const LoginForm = () => {
         ) : (
           <div className="h-4"></div>
         )}
+
+        <Input className="max-w-[280px]" placeholder="John Doe" type="text" {...register("name")} />
+        {errors.name ? (
+          <p className="text-xs text-red-500">{errors.name.message}</p>
+        ) : (
+          <div className="h-4"></div>
+        )}
         <div className="flex flex-col w-[280px] items-stretch">
           <PasswordInput control={control} />
-        </div>
-        <div className="flex justify-between items-center gap-1 pb-4 w-full">
-          <div className="flex gap-1">
-            <Controller
-              name="rememberMe"
-              control={control}
-              render={({ field }) => (
-                <Checkbox
-                  checked={field.value}
-                  onCheckedChange={field.onChange}
-                  className="cursor-pointer"
-                />
-              )}
-            />
-            <p className="text-xs text-black/60">Remember me</p>
-          </div>
-          <div className="flex gap-1">
-            <Link href="/" className="text-xs text-black/60 underline">
-              Forgot password?
-            </Link>
-          </div>
         </div>
         <Button variant="secondary" className="cursor-pointer" type="submit">
           {showLoading ? (
@@ -101,19 +85,12 @@ const LoginForm = () => {
               secondaryColor="rgba(0, 0, 0, 0.44)"
             />
           ) : (
-            "Log in"
+            "Sign up"
           )}
         </Button>
       </form>
-      <div className="py-4">
-        <p className="text-black/70">or</p>
-      </div>
-
-      <div className="border rounded-md p-1 border-black/30 hover:border-black hover:bg-black/80 cursor-pointer transition">
-        <GoogleIcon size={30} />
-      </div>
     </div>
   );
 };
 
-export default LoginForm;
+export default RegisterForm;

@@ -1,8 +1,13 @@
-import gradient from '../../../../public/gradient.webp';
-import Image from 'next/image';
-import Logo from '../logo';
+import Image from "next/image";
+import gradientSVG from "../../../public/gradient.webp";
+import Logo from "./logo";
 
-const LoginImage = () => {
+type AuthPageImage = {
+  mainText: string;
+  text: string;
+};
+
+const AuthPageImage = ({ mainText, text }: AuthPageImage) => {
   return (
     <div className="bg-neutral-900 rounded-[7px] h-1/4 md:h-full relative md:flex-1 overflow-hidden text-white width-1/2">
       <div className="p-4 font-bold text-lg tracking-wider text-white/90 flex items-center gap-2">
@@ -12,12 +17,12 @@ const LoginImage = () => {
         </div>
       </div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center space-y-2">
-        <p className="text-xl md:text-3xl font-bold">Real-time trading platform, out of the box</p>
-        <p className="md:text-md  text-white/80">Manage your money independly, smart and fast</p>
+        <p className="text-xl md:text-3xl font-bold">{mainText}</p>
+        <p className="md:text-md  text-white/80">{text}</p>
       </div>
       <div className="absolute md:-right-60 md:bottom-10 -bottom-40 -right-70">
         <Image
-          src={gradient}
+          src={gradientSVG}
           alt="gradient"
           width={500}
           height={1000}
@@ -28,4 +33,4 @@ const LoginImage = () => {
   );
 };
 
-export default LoginImage;
+export default AuthPageImage;
