@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
 import { Rubik } from 'next/font/google';
 
-const rubik = Rubik({
-  variable: '--font-rubik',
+const manrope = Manrope({
+  variable: '--font-manrope',
   subsets: ['latin'],
 });
 
@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${rubik.variable} antialiased`}>
+      <body className={`${manrope.variable} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
