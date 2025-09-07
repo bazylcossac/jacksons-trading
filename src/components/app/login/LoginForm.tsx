@@ -1,12 +1,13 @@
 'use client';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FcGoogle as GoogleIcon } from 'react-icons/fc';
 import { Login, LoginSchema } from '@/@types/app/login';
-import LoginPasswordHoverCard from './LoginPasswordHoverCard';
 import LoginPasswordInput from './LoginPasswordInput';
+import { Checkbox } from '@/components/ui/checkbox';
+import Link from 'next/link';
 
 const LoginForm = () => {
   const {
@@ -14,7 +15,10 @@ const LoginForm = () => {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm({ resolver: zodResolver(LoginSchema), defaultValues: { email: '', password: '' } });
+  } = useForm({
+    resolver: zodResolver(LoginSchema),
+    defaultValues: { email: '', password: '', rememberMe: false },
+  });
 
   const submitAction = (data: Login) => {
     console.log('submit');
@@ -28,7 +32,7 @@ const LoginForm = () => {
         <p>Join modern trading platform now.</p>
       </div>
       <form
-        className="w-full flex flex-col items-center justify-center gap-2"
+        className="flex flex-col items-center justify-center gap-2 "
         onSubmit={handleSubmit(submitAction)}
       >
         <Input
@@ -44,6 +48,27 @@ const LoginForm = () => {
         )}
         <div className="flex flex-col w-[280px] items-stretch">
           <LoginPasswordInput control={control} />
+        </div>
+        <div className="flex justify-between items-center gap-1 pb-4  w-full">
+          <div className="flex gap-1">
+            <Controller
+              name="rememberMe"
+              control={control}
+              render={({ field }) => (
+                <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                  className="cursor-pointer"
+                />
+              )}
+            />
+            <p className="text-xs text-black/60">Remember me</p>
+          </div>
+          <div className="flex gap-1">
+            <Link href="/" className="text-xs text-black/60 underline">
+              Forgot password?
+            </Link>
+          </div>
         </div>
         <Button variant="secondary" className="cursor-pointer" type="submit">
           Log in

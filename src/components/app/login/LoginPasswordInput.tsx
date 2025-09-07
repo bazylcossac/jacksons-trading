@@ -3,7 +3,7 @@ import LoginPasswordHoverCard from './LoginPasswordHoverCard';
 import { Control, useController } from 'react-hook-form';
 
 type LoginPasswordInput = {
-  control: Control<{ email: string; password: string }>;
+  control: Control<{ email: string; password: string; rememberMe: boolean }>;
 };
 
 const LoginPasswordInput = ({ control }: LoginPasswordInput) => {
