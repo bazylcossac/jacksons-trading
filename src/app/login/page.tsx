@@ -1,6 +1,6 @@
-import LoginForm from '@/components/app/login/LoginForm';
-import LoginImage from '@/components/app/login/LoginImage';
-import Link from 'next/link';
+import LoginForm from "@/components/app/login/LoginForm";
+import LoginImage from "@/components/app/login/LoginImage";
+import Link from "next/link";
 
 const LoginPage = () => {
   return (

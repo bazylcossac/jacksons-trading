@@ -1,6 +1,6 @@
-import { Input } from '@/components/ui/input';
-import LoginPasswordHoverCard from './LoginPasswordHoverCard';
-import { Control, useController } from 'react-hook-form';
+import { Input } from "@/components/ui/input";
+import { Control, useController } from "react-hook-form";
+import LoginPasswordHoverCard from "./LoginPasswordHoverCard";
 
 type LoginPasswordInput = {
   control: Control<{ email: string; password: string; rememberMe: boolean }>;
@@ -10,7 +10,7 @@ const LoginPasswordInput = ({ control }: LoginPasswordInput) => {
   const {
     field,
     fieldState: { error },
-  } = useController({ name: 'password', control });
+  } = useController({ name: "password", control });
 
   return (
     <>

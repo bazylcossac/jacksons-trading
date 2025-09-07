@@ -1,13 +1,13 @@
-import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
-import { cn } from '@/lib/utils';
-import { BsFillInfoSquareFill } from 'react-icons/bs';
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+import { cn } from "@/lib/utils";
+import { BsFillInfoSquareFill } from "react-icons/bs";
 
 type LoginPasswordHoverCard = {
   value: string;
 };
 
 const LoginPasswordHoverCard = ({ value }: LoginPasswordHoverCard) => {
-  const fiveCharactes = /^.{5,}$/.test(value);
+  const fiveCharactes = /^.{8,}$/.test(value);
   const oneSpecialCharacter = /^(?=.*[!@#$%^&*])/.test(value);
   const oneUppercaseCharacter = /[A-Z]/.test(value);
 
@@ -17,13 +17,13 @@ const LoginPasswordHoverCard = ({ value }: LoginPasswordHoverCard) => {
         <BsFillInfoSquareFill />
       </HoverCardTrigger>
       <HoverCardContent>
-        <p className={cn('text-xs', fiveCharactes ? 'text-green-500' : 'text-red-500')}>
-          At least 5 characters
+        <p className={cn("text-xs", fiveCharactes ? "text-green-500" : "text-red-500")}>
+          At least 8 characters
         </p>
-        <p className={cn('text-xs', oneUppercaseCharacter ? 'text-green-500' : 'text-red-500')}>
+        <p className={cn("text-xs", oneUppercaseCharacter ? "text-green-500" : "text-red-500")}>
           At least 1 uppercase character
         </p>
-        <p className={cn('text-xs', oneSpecialCharacter ? 'text-green-500' : 'text-red-500')}>
+        <p className={cn("text-xs", oneSpecialCharacter ? "text-green-500" : "text-red-500")}>
           At least 1 special character
         </p>
       </HoverCardContent>

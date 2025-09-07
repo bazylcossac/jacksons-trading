@@ -1,15 +1,21 @@
-'use client';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Controller, useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { FcGoogle as GoogleIcon } from 'react-icons/fc';
-import { Login, LoginSchema } from '@/@types/app/login';
-import LoginPasswordInput from './LoginPasswordInput';
-import { Checkbox } from '@/components/ui/checkbox';
-import Link from 'next/link';
-
+"use client";
+import { Login, LoginSchema } from "@/@types/app/login";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+import { authClient } from "@/lib/auth-client";
+import { zodResolver } from "@hookform/resolvers/zod";
+import Link from "next/link";
+import { useState } from "react";
+import { Controller, useForm } from "react-hook-form";
+import { FcGoogle as GoogleIcon } from "react-icons/fc";
+import { toast } from "sonner";
+import { SpinnerCircularFixed } from "spinners-react";
+import LoginPasswordInput from "./LoginPasswordInput";
 const LoginForm = () => {
+  const [showLoading, setShowLoading] = useState(false);
+  const [successLogged, setSuccessLogged] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -17,12 +23,28 @@ const LoginForm = () => {
     formState: { errors },
   } = useForm({
     resolver: zodResolver(LoginSchema),
-    defaultValues: { email: '', password: '', rememberMe: false },
+    defaultValues: { email: "", password: "", rememberMe: false },
   });
 
-  const submitAction = (data: Login) => {
-    console.log('submit');
-    console.log(data);
+  const submitAction = async (userData: Login) => {
+    await authClient.signIn.email(
+      {
+        email: userData.email,
+        password: "testpassword",
+        callbackURL: "/dashboard",
+        rememberMe: userData.rememberMe,
+      },
+      {
+        onSuccess: () => {
+          setShowLoading(false);
+        },
+        onRequest: () => setShowLoading(true),
+        onError: (error) => {
+          toast.error(error.error.message);
+          setShowLoading(false);
+        },
+      }
+    );
   };
 
   return (
@@ -39,7 +61,7 @@ const LoginForm = () => {
           className="max-w-[280px]"
           placeholder="example@example.com"
           type="email"
-          {...register('email')}
+          {...register("email")}
         />
         {errors.email ? (
           <p className="text-xs text-red-500">{errors.email.message}</p>
@@ -71,7 +93,17 @@ const LoginForm = () => {
           </div>
         </div>
         <Button variant="secondary" className="cursor-pointer" type="submit">
-          Log in
+          {showLoading ? (
+            <SpinnerCircularFixed
+              size={50}
+              thickness={180}
+              speed={100}
+              color="rgba(255, 255, 255, 1)"
+              secondaryColor="rgba(0, 0, 0, 0.44)"
+            />
+          ) : (
+            "Log in"
+          )}
         </Button>
       </form>
       <div className="py-4">

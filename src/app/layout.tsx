@@ -1,11 +1,11 @@
-import './globals.css';
-import type { Metadata } from 'next';
-import { ThemeProvider } from 'next-themes';
-import { Rubik } from 'next/font/google';
-
+import { Toaster } from "@/components/ui/sonner";
+import type { Metadata } from "next";
+import { ThemeProvider } from "next-themes";
+import { Rubik } from "next/font/google";
+import "./globals.css";
 const manrope = Rubik({
-  variable: '--font-manrope',
-  subsets: ['latin'],
+  variable: "--font-manrope",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -29,6 +29,7 @@ export default function RootLayout({
         >
           {children}
         </ThemeProvider>
+        <Toaster />
       </body>
     </html>
   );
