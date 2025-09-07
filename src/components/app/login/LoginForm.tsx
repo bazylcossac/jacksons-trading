@@ -26,7 +26,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="w-1/2 flex flex-col text-center items-center justify-center">
+    <div className="md:w-1/2 flex flex-col text-center items-center justify-center md:pt-0 pt-10">
       <div className="pb-4 space-y-2">
         <h2 className="text-3xl">Log in</h2>
         <p>Join modern trading platform now.</p>
@@ -49,7 +49,7 @@ const LoginForm = () => {
         <div className="flex flex-col w-[280px] items-stretch">
           <LoginPasswordInput control={control} />
         </div>
-        <div className="flex justify-between items-center gap-1 pb-4  w-full">
+        <div className="flex justify-between items-center gap-1 pb-4 w-full">
           <div className="flex gap-1">
             <Controller
               name="rememberMe"

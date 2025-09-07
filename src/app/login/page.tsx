@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const LoginPage = () => {
   return (
-    <div className="bg-white w-full h-screen text-black flex p-2 relative">
+    <div className="bg-white w-full h-screen text-black p-2 relative flex flex-col md:flex-row">
       <LoginImage />
       <LoginForm />
       <div className="absolute bottom-2 right-2">
