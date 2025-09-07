@@ -4,7 +4,7 @@ import Logo from '../logo';
 
 const LoginImage = () => {
   return (
-    <div className="bg-neutral-900 rounded-[7px] h-1/3 md:h-full relative md:flex-1 overflow-hidden text-white width-1/2">
+    <div className="bg-neutral-900 rounded-[7px] h-1/4 md:h-full relative md:flex-1 overflow-hidden text-white width-1/2">
       <div className="p-4 font-bold text-lg tracking-wider text-white/90 flex items-center gap-2">
         <Logo width={30} height={30} alt="logo" className="rounded-full" />
         <div className="hidden md:inline-block">
