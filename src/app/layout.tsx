@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
 import { Rubik } from 'next/font/google';
 
-const manrope = Manrope({
+const manrope = Rubik({
   variable: '--font-manrope',
   subsets: ['latin'],
 });
