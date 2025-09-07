@@ -1,7 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Manrope } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
+import { Rubik } from 'next/font/google';
 
 const manrope = Manrope({
   variable: '--font-manrope',
