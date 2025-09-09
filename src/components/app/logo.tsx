@@ -1,5 +1,5 @@
-import LogoSVG from '../../../public/logo.svg';
-import Image from 'next/image';
+import Image from "next/image";
+import LogoSVG from "../../../public/logo.svg";
 type Logo = {
   width: number;
   height: number;
