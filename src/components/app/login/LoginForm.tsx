@@ -12,6 +12,7 @@ import { FcGoogle as GoogleIcon } from "react-icons/fc";
 import { toast } from "sonner";
 import { SpinnerCircularFixed } from "spinners-react";
 import PasswordInput from "../PasswordInput";
+
 const LoginForm = () => {
   const [showLoading, setShowLoading] = useState(false);
 
@@ -25,7 +26,7 @@ const LoginForm = () => {
     defaultValues: { email: "", password: "", rememberMe: false },
   });
 
-  const submitAction = async (userData: Login) => {
+  const loginCredentials = async (userData: Login) => {
     await authClient.signIn.email(
       {
         email: userData.email,
@@ -46,6 +47,18 @@ const LoginForm = () => {
     );
   };
 
+  const loginGoogle = async () => {
+    const data = await authClient.signIn.social({
+      provider: "google",
+      callbackURL: "/dashboard",
+      fetchOptions: {
+        onError: (error) => {
+          toast.error(error.error.message);
+        },
+      },
+    });
+  };
+
   return (
     <div className="md:w-1/2 flex flex-col text-center items-center justify-center md:pt-0 pt-10">
       <div className="pb-4 space-y-2">
@@ -54,7 +67,7 @@ const LoginForm = () => {
       </div>
       <form
         className="flex flex-col items-center justify-center gap-2 "
-        onSubmit={handleSubmit(submitAction)}
+        onSubmit={handleSubmit(loginCredentials)}
       >
         <Input
           className="max-w-[280px]"
@@ -109,7 +122,10 @@ const LoginForm = () => {
         <p className="text-black/70">or</p>
       </div>
 
-      <div className="border rounded-md p-1 border-black/30 hover:border-black hover:bg-black/80 cursor-pointer transition">
+      <div
+        className="border rounded-md p-1 border-black/30 hover:border-black hover:bg-black/80 cursor-pointer transition"
+        onClick={loginGoogle}
+      >
         <GoogleIcon size={30} />
       </div>
     </div>
