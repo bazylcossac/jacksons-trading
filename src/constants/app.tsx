@@ -23,6 +23,11 @@ export const sidebarRoutes = [
         icon: <GiReceiveMoney />,
         href: "/investments-plans",
       },
+    ],
+  },
+  {
+    mainLabel: "SUPPORT",
+    routes: [
       {
         label: "Support & Help",
         icon: <MdSupportAgent />,

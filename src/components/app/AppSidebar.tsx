@@ -3,7 +3,7 @@ import AppSidebarElement from "./AppSidebarElement";
 
 const AppSidebar = () => {
   return (
-    <nav className="min-w-[300px] h-screen  pl-4 pt-4 ">
+    <nav className="w-[250px] h-screen p-4 space-y-4 border-r">
       {sidebarRoutes.map((route) => (
         <AppSidebarElement {...route} key={route.mainLabel} />
       ))}
