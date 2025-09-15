@@ -19,7 +19,7 @@ const AppSidebarElement = ({ routes, mainLabel }: AppSidebarElement) => {
 
   return (
     <div>
-      <p className="text-xs pb-4 text-white/50">{mainLabel}</p>
+      <p className="text-xs pb-4 text-foreground/50">{mainLabel}</p>
       <div className="space-y-1">
         {routes.map((route) => (
           <Link

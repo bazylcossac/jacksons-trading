@@ -35,7 +35,7 @@ const AppHeader = () => {
         <Button className="rounded-full size-10 cursor-pointer hover:brightness-90">
           <MdNotificationsNone />
         </Button>
-        {data?.user.image ? (
+        {!data?.user.image ? (
           <Image
             width={100}
             height={100}
@@ -44,7 +44,9 @@ const AppHeader = () => {
             className="size-10 rounded-full cursor-pointer hover:brightness-90"
           />
         ) : (
-          <div className="rounded-full size-10 bg-accent">{data?.user.name.slice(1, 2)}</div>
+          <div className="rounded-full size-10 bg-accent flex items-center justify-center font-bold cursor-pointer hover:brightness-90">
+            {data?.user.name.slice(1, 2).toUpperCase()}
+          </div>
         )}
       </div>
     </header>
