@@ -104,7 +104,7 @@ const LoginForm = () => {
             </Link>
           </div>
         </div>
-        <Button variant="secondary" className="cursor-pointer" type="submit">
+        <Button className="cursor-pointer" type="submit">
           {showLoading ? (
             <SpinnerCircularFixed
               size={50}

@@ -5,10 +5,10 @@ import AppSidebar from "./AppSidebar";
 
 const AppLayout = async ({ children }: { children: ReactNode }) => {
   return (
-    <div>
+    <div className="flex flex-row">
       <AppSidebar />
-      <div>
-        <div></div>
+      <div className="flex flex-col">
+        <div>navbar</div>
         {children}
       </div>
     </div>

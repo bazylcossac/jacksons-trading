@@ -1,9 +1,9 @@
 import { Toaster } from "@/components/ui/sonner";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
-import { Rubik } from "next/font/google";
+import { Outfit } from "next/font/google";
 import "./globals.css";
-const manrope = Rubik({
+const outfit = Outfit({
   variable: "--font-manrope",
   subsets: ["latin"],
 });
@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${manrope.variable} antialiased`}>
+      <body className={`${outfit.variable} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
