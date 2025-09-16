@@ -1,19 +1,15 @@
 "use client";
-import useDevice from "@/hooks/useDevice";
 import { useSession } from "@/lib/auth-client";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import { useCallback } from "react";
-import { GoRows } from "react-icons/go";
 import { MdNotificationsNone, MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 const AppHeader = () => {
   const { setTheme, resolvedTheme } = useTheme();
   const { data } = useSession();
-  const { isMobile } = useDevice();
 
-  console.log(isMobile);
   const handleMode = useCallback(() => {
     if (resolvedTheme === "dark") {
       setTheme("light");
@@ -24,12 +20,8 @@ const AppHeader = () => {
 
   return (
     <header className="flex items-center justify-between p-4 border-b w-full ">
-      <div className="flex items-center gap-4">
-        <Button variant="secondary" className="cursor-pointer">
-          <GoRows />
-        </Button>
-        <Input type="text" placeholder="Search..." className="placeholder:text-sm max-w-[300px]" />
-      </div>
+      <Input type="text" placeholder="Search..." className="placeholder:text-sm max-w-[300px]" />
+
       <div className="flex gap-3">
         <Button variant="secondary" onClick={handleMode} className="rounded-full size-10">
           {resolvedTheme === "dark" ? <MdOutlineLightMode /> : <MdOutlineDarkMode />}
