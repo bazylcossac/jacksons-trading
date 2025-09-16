@@ -4,8 +4,9 @@ import { useTheme } from "next-themes";
 import Image from "next/image";
 import { useCallback } from "react";
 import { MdNotificationsNone, MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
+
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 const AppHeader = () => {
   const { setTheme, resolvedTheme } = useTheme();
   const { data } = useSession();
@@ -20,7 +21,9 @@ const AppHeader = () => {
 
   return (
     <header className="flex items-center justify-between p-4 border-b w-full ">
-      <Input type="text" placeholder="Search..." className="placeholder:text-sm max-w-[300px]" />
+      <div className="flex items-center gap-4 ">
+        <Input type="text" placeholder="Search..." className="placeholder:text-sm max-w-[300px]" />
+      </div>
 
       <div className="flex gap-3">
         <Button variant="secondary" onClick={handleMode} className="rounded-full size-10">

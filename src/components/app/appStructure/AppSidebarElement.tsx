@@ -33,7 +33,7 @@ const AppSidebarElement = ({ routes, mainLabel, isHidden }: AppSidebarElement) =
             key={route.href}
           >
             {route.icon}
-            {!isHidden && <p className="text-sm">{route.label}</p>}
+            {!isHidden && <p className="text-sm font-bold">{route.label}</p>}
           </Link>
         ))}
       </div>
