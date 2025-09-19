@@ -27,9 +27,9 @@ const AppSidebarUserBalance = () => {
 
           <div className="pt-2 space-x-1">
             <p className="text-foreground/50 text-xs pb-1">History</p>
-            <UserPorfilPeriodCard periodWallet={9024} periodTime="1D" />
+            <UserPorfilPeriodCard periodWallet={10023} periodTime="1D" />
             <UserPorfilPeriodCard periodWallet={11125} periodTime="1W" />
-            <UserPorfilPeriodCard periodWallet={14254} periodTime="1M" />
+            <UserPorfilPeriodCard periodWallet={14222} periodTime="1M" />
           </div>
         </div>
       </CardContent>

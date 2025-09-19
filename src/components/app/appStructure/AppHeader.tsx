@@ -26,10 +26,10 @@ const AppHeader = () => {
       </div>
 
       <div className="flex gap-3">
-        <Button variant="secondary" onClick={handleMode} className="rounded-full size-10">
+        <Button variant="secondary" onClick={handleMode} className="rounded-md size-10">
           {resolvedTheme === "dark" ? <MdOutlineLightMode /> : <MdOutlineDarkMode />}
         </Button>
-        <Button className="rounded-full size-10 cursor-pointer hover:brightness-90">
+        <Button className="rounded-md size-10 cursor-pointer hover:brightness-90">
           <MdNotificationsNone />
         </Button>
         {data?.user.image ? (
@@ -38,7 +38,7 @@ const AppHeader = () => {
             height={100}
             alt="user image"
             src={data.user.image}
-            className="size-10 rounded-full cursor-pointer hover:brightness-90"
+            className="size-10 rounded-md cursor-pointer hover:brightness-90"
           />
         ) : (
           <div className="rounded-full size-10 bg-accent flex items-center justify-center font-bold cursor-pointer hover:brightness-90">

@@ -22,6 +22,7 @@ const AppSidebar = () => {
       >
         <GoRows className={cn("rotate-90 transition", isHidden && "rotate-0")} />
       </Button>
+
       {!isHidden && <AppHeaderUserBalance />}
       {sidebarRoutes.map((route) => (
         <AppSidebarElement {...route} key={route.mainLabel} isHidden={isHidden} />
