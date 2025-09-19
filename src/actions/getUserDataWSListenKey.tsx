@@ -8,11 +8,19 @@ const ListenKey = z.object({
 });
 
 const getUserDataWSListenKey = async () => {
-  const response = await binanceAxiosInstance.post("/userDataStream", {
-    "X-MBX-APIKEY": process.env.BINANCE_API_KEY,
-  });
+  const response = await binanceAxiosInstance.post(
+    "/userDataStream",
+    null, // body jest puste
+    {
+      headers: {
+        "X-MBX-APIKEY": process.env.BINANCE_API_KEY!,
+      },
+    }
+  );
 
   const safeData = await ListenKey.safeParseAsync(response.data);
+
+  console.log(safeData);
 
   if (!safeData.success) {
     return { listenKey: undefined };
