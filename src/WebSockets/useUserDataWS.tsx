@@ -1,5 +1,15 @@
-import { createContext } from "react";
+import { USER_DATA_WS_V3 } from "@/constants/websocket/websocket";
+import useWebsocket from "@/hooks/useWebsocket";
 
-const userDataWS = createContext(null);
+export const useUserDataWS = (listenKey: string) => {
+  const onMessage = (event: MessageEvent) => {
+    console.log(event.data);
+  };
 
-const UserDataWSProvider = () => {};
+  const methods = useWebsocket({
+    websocketUrl: `${USER_DATA_WS_V3}${listenKey}`,
+    onMessage: onMessage,
+  });
+
+  return { ...methods };
+};

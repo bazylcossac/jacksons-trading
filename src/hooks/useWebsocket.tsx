@@ -1,17 +1,26 @@
 import useWebSocket from "react-use-websocket";
 
 type UseWebsocket = {
-  websocketUrl: string;
-  onOpen?: () => void;
-  shouldReconnect: () => boolean;
+  options: {
+    websocketUrl: string;
+    onMessage: (event: MessageEvent) => void;
+    onOpen?: () => void;
+    shouldReconnect?: () => boolean;
+  };
 };
 
-const useWebsocket = ({ websocketUrl, onOpen }: UseWebsocket) => {
+const useWebsocket = ({
+  websocketUrl,
+  onOpen,
+  onMessage,
+  shouldReconnect,
+}: UseWebsocket["options"]) => {
   const methods = useWebSocket(websocketUrl, {
     onOpen: onOpen,
-    shouldReconnect: () => true,
+    shouldReconnect: shouldReconnect || (() => true),
     reconnectAttempts: 3,
     heartbeat: { message: "ping", returnMessage: "pong", interval: 10000 },
+    onMessage: onMessage,
   });
 
   return { ...methods };

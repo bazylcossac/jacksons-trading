@@ -23,7 +23,7 @@ const getUserDataWSListenKey = async () => {
   console.log(safeData);
 
   if (!safeData.success) {
-    return { listenKey: undefined };
+    throw new Error("Failed to init");
   }
 
   return safeData.data;
