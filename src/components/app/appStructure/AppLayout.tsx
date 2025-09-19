@@ -1,10 +1,8 @@
-"use cache";
-
 import { ReactNode } from "react";
 import AppHeader from "./AppHeader";
 import AppSidebar from "./AppSidebar";
 
-const AppLayout = async ({ children }: { children: ReactNode }) => {
+const AppLayout = ({ children }: { children: ReactNode }) => {
   return (
     <div className="flex flex-row w-full">
       <AppSidebar />
