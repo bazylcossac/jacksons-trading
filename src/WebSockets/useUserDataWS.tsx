@@ -9,6 +9,7 @@ export const useUserDataWS = (listenKey: string) => {
   const methods = useWebsocket({
     websocketUrl: `${USER_DATA_WS_V3}${listenKey}`,
     onMessage: onMessage,
+    onOpen: () => console.log("User WS - connected"),
   });
 
   return { ...methods };
