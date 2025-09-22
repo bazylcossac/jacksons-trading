@@ -1,21 +1,28 @@
-import { UserDataWSProvider } from "@/AppInit/UserDataWSProvider";
-import { ReactNode, Suspense } from "react";
+"use client";
+
+import { useGetUserDataListenKey } from "@/query/User/useGetUserDataListenKey";
+import { UserDataWSProvider } from "@/WebSockets/Providers/UserDataWSProvider";
+import { PropsWithChildren } from "react";
 import AppHeader from "./AppHeader";
 import AppSidebar from "./AppSidebar";
 
-const AppLayout = ({ children, listenKey }: { children: ReactNode; listenKey: string }) => {
+const AppLayout = ({ children }: PropsWithChildren) => {
+  const { isLoading } = useGetUserDataListenKey();
+
+  if (isLoading) {
+    return <p>loading...</p>;
+  }
+
   return (
-    <Suspense>
-      <UserDataWSProvider listenKey={listenKey}>
-        <div className="flex flex-row w-full">
-          <AppSidebar />
-          <div className="flex flex-col w-full">
-            <AppHeader />
-            {children}
-          </div>
+    <UserDataWSProvider>
+      <div className="flex flex-row w-full h-screen">
+        <AppSidebar />
+        <div className="flex flex-col w-full">
+          <AppHeader />
+          {children}
         </div>
-      </UserDataWSProvider>
-    </Suspense>
+      </div>
+    </UserDataWSProvider>
   );
 };
 

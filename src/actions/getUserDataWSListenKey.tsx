@@ -7,20 +7,14 @@ const ListenKey = z.object({
   listenKey: z.string(),
 });
 
-const getUserDataWSListenKey = async () => {
-  const response = await binanceAxiosInstance.post(
-    "/userDataStream",
-    null, // body jest puste
-    {
-      headers: {
-        "X-MBX-APIKEY": process.env.BINANCE_API_KEY!,
-      },
-    }
-  );
+export const getUserDataWSListenKey = async () => {
+  const response = await binanceAxiosInstance.post("/userDataStream", null, {
+    headers: {
+      "X-MBX-APIKEY": process.env.BINANCE_API_KEY!,
+    },
+  });
 
   const safeData = await ListenKey.safeParseAsync(response.data);
-
-  console.log(safeData);
 
   if (!safeData.success) {
     throw new Error("Failed to init");
@@ -29,4 +23,12 @@ const getUserDataWSListenKey = async () => {
   return safeData.data;
 };
 
-export default getUserDataWSListenKey;
+export const keepUserDataWSListenKey = async (listenKey: string) => {
+  await binanceAxiosInstance.put(`/userDataStream?listenKey=${listenKey}`, null, {
+    headers: {
+      "X-MBX-APIKEY": process.env.BINANCE_API_KEY!,
+    },
+  });
+
+  return listenKey;
+};

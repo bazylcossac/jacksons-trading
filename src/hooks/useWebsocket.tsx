@@ -9,15 +9,9 @@ type UseWebsocket = {
   };
 };
 
-const useWebsocket = ({
-  websocketUrl,
-  onOpen,
-  onMessage,
-  shouldReconnect,
-}: UseWebsocket["options"]) => {
+const useWebsocket = ({ websocketUrl, onOpen, onMessage }: UseWebsocket["options"]) => {
   const methods = useWebSocket(websocketUrl, {
     onOpen: onOpen,
-    shouldReconnect: shouldReconnect || (() => true),
     onMessage: onMessage,
   });
 

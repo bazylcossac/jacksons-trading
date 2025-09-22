@@ -1,18 +1,23 @@
 "use cache";
 
-// TODO
-
-// DODAC prefetch query z tantsacka zeby tutaj podawac go do providera
-// a w query options zrobic refetchInterval
-
-import getUserDataWSListenKey from "@/actions/getUserDataWSListenKey";
 import AppLayout from "@/components/app/appStructure/AppLayout";
+import HydrationProvider from "@/query/HydrationProvider";
+import { userGetDataListenKeyQueryOptions } from "@/query/User/useGetUserDataListenKey";
+import { getQueryClient } from "@/utils/getQueryClient";
+import { dehydrate } from "@tanstack/react-query";
 import { ReactNode } from "react";
 
 const MainLayout = async ({ children }: { children: ReactNode }) => {
-  const { listenKey } = await getUserDataWSListenKey();
+  const queryClient = getQueryClient();
+  await queryClient.prefetchQuery(userGetDataListenKeyQueryOptions());
 
-  return <AppLayout listenKey={listenKey}>{children}</AppLayout>;
+  const dehydratedState = dehydrate(queryClient);
+
+  return (
+    <HydrationProvider state={dehydratedState}>
+      <AppLayout>{children}</AppLayout>
+    </HydrationProvider>
+  );
 };
 
 export default MainLayout;

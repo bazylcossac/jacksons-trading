@@ -9,7 +9,7 @@ type UserPorfilPeriodCard = {
 const UserPorfilPeriodCard = ({ periodWallet, periodTime }: UserPorfilPeriodCard) => {
   const periodAmount = useMemo(() => {
     const percent = ((10250 - periodWallet) / periodWallet) * 100;
-    console.log(percent);
+
     if (percent > 0) return `+${percent.toFixed(2)}`;
     return percent.toFixed(2).toString();
   }, [periodWallet]);
