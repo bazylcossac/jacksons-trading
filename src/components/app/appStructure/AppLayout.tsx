@@ -7,14 +7,14 @@ import AppHeader from "./AppHeader";
 import AppSidebar from "./AppSidebar";
 
 const AppLayout = ({ children }: PropsWithChildren) => {
-  const { isLoading } = useGetUserDataListenKey();
+  const { isLoading, data: listenKey } = useGetUserDataListenKey();
 
-  if (isLoading) {
+  if (isLoading || !listenKey) {
     return <p>loading...</p>;
   }
 
   return (
-    <UserDataWSProvider>
+    <UserDataWSProvider listenKey={listenKey}>
       <div className="flex flex-row w-full h-screen">
         <AppSidebar />
         <div className="flex flex-col w-full">
