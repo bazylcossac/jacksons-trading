@@ -8,8 +8,9 @@ import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import useDevice from "@/hooks/useDevice";
-import AppMobileSidebar from "./AppMobileSidebar";
-import AppNotificationPopover from "./AppNotificationPopover";
+import AppNotificationPopover from "../AppNotificationPopover";
+import AppMobileSidebar from "../AppSidebar/AppMobileSidebar";
+import AppFavouriteCrypto from "./AppFavouriteCrypto";
 const AppHeader = () => {
   const { setTheme, resolvedTheme } = useTheme();
   const { data } = useSession();
@@ -32,6 +33,9 @@ const AppHeader = () => {
           placeholder="Search..."
           className="placeholder:text-sm max-w-[300px] h-full"
         />
+      </div>
+      <div>
+        <AppFavouriteCrypto />
       </div>
 
       <div className="flex gap-3">

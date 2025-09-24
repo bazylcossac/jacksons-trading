@@ -2,17 +2,20 @@ import { cn } from "@/lib/utils";
 import { useMemo } from "react";
 
 type UserPorfilPeriodCard = {
-  periodWallet: number;
+  openPrice: number | string;
+  currentPrice: number | string;
   periodTime: string;
 };
 
-const UserPorfilPeriodCard = ({ periodWallet, periodTime }: UserPorfilPeriodCard) => {
+const UserPorfilPeriodCard = ({ openPrice, periodTime, currentPrice }: UserPorfilPeriodCard) => {
+  if (!openPrice || !currentPrice) return;
+
   const periodAmount = useMemo(() => {
-    const percent = ((10250 - periodWallet) / periodWallet) * 100;
+    const percent = ((Number(currentPrice) - Number(openPrice)) / Number(openPrice)) * 100;
 
     if (percent > 0) return `+${percent.toFixed(2)}`;
     return percent.toFixed(2).toString();
-  }, [periodWallet]);
+  }, [openPrice]);
 
   return (
     <div

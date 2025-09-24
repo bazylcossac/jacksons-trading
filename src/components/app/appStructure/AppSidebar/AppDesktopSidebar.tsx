@@ -4,7 +4,7 @@ import useDevice from "@/hooks/useDevice";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { GoRows } from "react-icons/go";
-import { Button } from "../../ui/button";
+import { Button } from "../../../ui/button";
 import AppSidebarElement from "./AppSidebarElement";
 
 const AppDesktopSidebar = () => {
