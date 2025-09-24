@@ -3,10 +3,11 @@ import { useSession } from "@/lib/auth-client";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import { useCallback } from "react";
-import { MdNotificationsNone, MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
+import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import AppNotificationPopover from "./AppNotificationPopover";
 const AppHeader = () => {
   const { setTheme, resolvedTheme } = useTheme();
   const { data } = useSession();
@@ -29,9 +30,10 @@ const AppHeader = () => {
         <Button variant="secondary" onClick={handleMode} className="rounded-md size-10">
           {resolvedTheme === "dark" ? <MdOutlineLightMode /> : <MdOutlineDarkMode />}
         </Button>
-        <Button className="rounded-md size-10 cursor-pointer hover:brightness-90">
+        <AppNotificationPopover />
+        {/* <Button className="rounded-md size-10 cursor-pointer hover:brightness-90">
           <MdNotificationsNone />
-        </Button>
+        </Button> */}
         {data?.user.image ? (
           <Image
             width={100}
