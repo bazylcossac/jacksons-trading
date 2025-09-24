@@ -7,10 +7,13 @@ import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import useDevice from "@/hooks/useDevice";
+import AppMobileSidebar from "./AppMobileSidebar";
 import AppNotificationPopover from "./AppNotificationPopover";
 const AppHeader = () => {
   const { setTheme, resolvedTheme } = useTheme();
   const { data } = useSession();
+  const { isMobile } = useDevice();
 
   const handleMode = useCallback(() => {
     if (resolvedTheme === "dark") {
@@ -21,9 +24,14 @@ const AppHeader = () => {
   }, [resolvedTheme]);
 
   return (
-    <header className="flex items-center justify-between p-4 border-b w-full ">
-      <div className="flex items-center gap-4 ">
-        <Input type="text" placeholder="Search..." className="placeholder:text-sm max-w-[300px]" />
+    <header className="flex items-center justify-between p-4 border-b w-full">
+      <div className="flex items-center gap-4 h-full">
+        {isMobile && <AppMobileSidebar />}
+        <Input
+          type="text"
+          placeholder="Search..."
+          className="placeholder:text-sm max-w-[300px] h-full"
+        />
       </div>
 
       <div className="flex gap-3">

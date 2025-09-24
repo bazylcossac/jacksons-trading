@@ -1,33 +1,13 @@
 "use client";
-import { sidebarRoutes } from "@/constants/app";
-import { cn } from "@/lib/utils";
-import { useState } from "react";
-import { GoRows } from "react-icons/go";
-import { Button } from "../../ui/button";
-import AppSidebarElement from "./AppSidebarElement";
+import useDevice from "@/hooks/useDevice";
+import AppDesktopSidebar from "./AppDesktopSidebar";
 
 const AppSidebar = () => {
-  const [isHidden, setIsHidden] = useState(false);
+  const { isMobile } = useDevice();
 
-  return (
-    <nav
-      className={cn("w-[250px] h-full p-4 space-y-4 border-r transition", isHidden && "w-[70px]")}
-    >
-      <Button
-        variant="secondary"
-        className="cursor-pointer"
-        size="sm"
-        onClick={() => setIsHidden((prev) => !prev)}
-      >
-        <GoRows className={cn("rotate-90 transition", isHidden && "rotate-0")} />
-      </Button>
+  if (isMobile) return null;
 
-      {/* {!isHidden && <AppHeaderUserBalance />} */}
-      {sidebarRoutes.map((route) => (
-        <AppSidebarElement {...route} key={route.mainLabel} isHidden={isHidden} />
-      ))}
-    </nav>
-  );
+  return <AppDesktopSidebar />;
 };
 
 export default AppSidebar;
