@@ -6,7 +6,6 @@ import useFavouriteCryptoBear from "@/store/Crypto/FavouriteCrypto/favouriteCryp
 export const useFavouriteCrypto = () => {
   const onMessage = (event: MessageEvent) => {
     const safeData = TickerSchema.safeParse(JSON.parse(event.data));
-    console.log(safeData);
 
     if (!safeData.success) return;
 

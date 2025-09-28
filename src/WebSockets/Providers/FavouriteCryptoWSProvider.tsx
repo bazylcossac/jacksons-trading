@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, PropsWithChildren } from "react";
+import { createContext, PropsWithChildren, useEffect } from "react";
 import { SendMessage } from "react-use-websocket";
 import { useFavouriteCrypto } from "../FavouriteCrypto/FavouriteCrypto";
 
@@ -11,7 +11,14 @@ type FavouriteCryptoValues = {
 const FavouriteCryptoWS = createContext<FavouriteCryptoValues>(null);
 
 export const FavouriteCryptoProvider = ({ children }: PropsWithChildren) => {
-const { sendMessage } = useFavouriteCrypto();
+  useEffect(() => {
+    fetch("/api/hello")
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  const { sendMessage } = useFavouriteCrypto();
 
   return (
     <FavouriteCryptoWS.Provider value={{ sendMessage: sendMessage }}>

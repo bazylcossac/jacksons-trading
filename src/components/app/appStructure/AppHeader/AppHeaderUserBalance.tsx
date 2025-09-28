@@ -1,7 +1,7 @@
 "use client";
 import { BorderBeam } from "@/components/ui/border-beam";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import UserPorfilPeriodCard from "../../user/UserProfitPeriodCard";
+import UserPorfilPeriodCard from "../../user/PeriodCryptoCard";
 const AppSidebarUserBalance = () => {
   return (
     <Card className="relative w-[200px] h-[200px] overflow-hidden">

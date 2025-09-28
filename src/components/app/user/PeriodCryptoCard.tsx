@@ -7,7 +7,7 @@ type UserPorfilPeriodCard = {
   periodTime: string;
 };
 
-const UserPorfilPeriodCard = ({ openPrice, periodTime, currentPrice }: UserPorfilPeriodCard) => {
+const PeriodCryptoCard = ({ openPrice, periodTime, currentPrice }: UserPorfilPeriodCard) => {
   if (!openPrice || !currentPrice) return;
 
   const periodAmount = useMemo(() => {
@@ -37,4 +37,4 @@ const UserPorfilPeriodCard = ({ openPrice, periodTime, currentPrice }: UserPorfi
   );
 };
 
-export default UserPorfilPeriodCard;
+export default PeriodCryptoCard;
