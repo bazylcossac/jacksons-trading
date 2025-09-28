@@ -1,4 +1,4 @@
-import { testHonoType } from "@/components/app/api/[[...route]]/route";
+import { AppType } from "@/app/api/[[...route]]/route";
 import { hc } from "hono/client";
 
-const honoClient = hc<testHonoType>("http://localhost:3000/");
+const honoClient = hc<AppType>("http://:3000/");

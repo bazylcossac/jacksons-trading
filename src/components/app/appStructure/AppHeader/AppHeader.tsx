@@ -55,7 +55,7 @@ const AppHeader = () => {
             className="size-10 rounded-md cursor-pointer hover:brightness-90"
           />
         ) : (
-          <div className="rounded-full size-10 bg-accent flex items-center justify-center font-bold cursor-pointer hover:brightness-90">
+          <div className="rounded-full size-10 bg-accent grid place-items-center font-bold cursor-pointer hover:brightness-90">
             {data?.user.name.slice(1, 2).toUpperCase() || "U"}
           </div>
         )}
