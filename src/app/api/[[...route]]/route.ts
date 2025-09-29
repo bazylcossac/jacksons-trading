@@ -1,13 +1,6 @@
-import { Hono } from "hono";
+import app from "@/server/hono/app";
 import { handle } from "hono/vercel";
+export type { AppType } from "@/server/hono/app";
 
-const app = new Hono().basePath("/api");
-
-app.get("/hello", (c) => c.json({ message: "Hello Next.js!" }));
-
-// typy dla klienta:
-export type AppType = typeof app;
-
-// exporty dla Next.js:
 export const GET = handle(app);
 export const POST = handle(app);

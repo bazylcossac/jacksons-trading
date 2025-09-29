@@ -43,9 +43,7 @@ const AppHeader = () => {
           {resolvedTheme === "dark" ? <MdOutlineLightMode /> : <MdOutlineDarkMode />}
         </Button>
         <AppNotificationPopover />
-        {/* <Button className="rounded-md size-10 cursor-pointer hover:brightness-90">
-          <MdNotificationsNone />
-        </Button> */}
+
         {data?.user.image ? (
           <Image
             width={100}
