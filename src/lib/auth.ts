@@ -15,7 +15,7 @@ export const auth = betterAuth({
   emailVerification: {
     sendOnSignUp: true,
     autoSignInAfterVerification: true,
-    sendVerificationEmail: async ({ user, url, token }, request) => {
+    sendVerificationEmail: async ({ user, url }) => {
       await trpcServer.resend.sendVerificationEmail({
         email: user.email,
         firstName: user.name,

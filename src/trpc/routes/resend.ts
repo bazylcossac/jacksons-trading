@@ -8,7 +8,12 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export const resendRouter = router({
   sendVerificationEmail: protectedProcedure
     .input(
-      z.object({ firstName: z.string(), email: z.email(), text: z.string(), userImage: z.url() })
+      z.object({
+        firstName: z.string(),
+        email: z.email(),
+        text: z.string(),
+        userImage: z.url(),
+      })
     )
     .query(async ({ input }) => {
       const { firstName, email, text, userImage } = input;
