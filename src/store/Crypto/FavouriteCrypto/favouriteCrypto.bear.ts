@@ -1,4 +1,4 @@
-import { TickerSchema } from "@/@types/tickerCrypto";
+import type { TickerSchema } from "@/@types/tickerCrypto";
 import { produce } from "immer";
 import { create } from "zustand";
 

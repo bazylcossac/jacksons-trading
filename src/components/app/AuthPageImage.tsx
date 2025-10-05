@@ -13,7 +13,7 @@ const AuthPageImage = ({ mainText, text }: AuthPageImage) => {
       <div className="p-4 font-bold text-lg tracking-wider text-white/90 flex items-center gap-2">
         <Logo width={30} height={30} alt="logo" className="rounded-full" />
         <div className="hidden md:inline-block">
-          Jackson's <span className="font-light">Trading Platform</span>
+          Jackson&apos;s <span className="font-light">Trading Platform</span>
         </div>
       </div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center space-y-2">

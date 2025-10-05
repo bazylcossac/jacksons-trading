@@ -1,30 +1,23 @@
-"use client";
-
-import { useGetUserDataListenKey } from "@/query/User/useGetUserDataListenKey";
-import { FavouriteCryptoProvider } from "@/WebSockets/Providers/FavouriteCryptoWSProvider";
+import { trpcServer } from "@/trpc/trpcServer";
 import { UserDataWSProvider } from "@/WebSockets/Providers/UserDataWSProvider";
-import { PropsWithChildren } from "react";
+import { Suspense, type PropsWithChildren } from "react";
 import AppHeader from "./AppHeader/AppHeader";
 import AppSidebar from "./AppSidebar/AppSidebar";
 
-const AppLayout = ({ children }: PropsWithChildren) => {
-  const { isLoading, data: listenKey } = useGetUserDataListenKey();
-
-  if (isLoading || !listenKey) {
-    return <p>loading...</p>;
-  }
+const AppLayout = async ({ children }: PropsWithChildren) => {
+  const listenKey = await trpcServer.listenKey.getListenKey();
 
   return (
-    <UserDataWSProvider listenKey={listenKey}>
-      <FavouriteCryptoProvider />
-      <div className="flex flex-row w-full h-screen">
-        <AppSidebar />
-        <div className="flex flex-col w-full">
-          <AppHeader />
-          {children}
-        </div>
+    <div className="flex flex-row w-full h-screen">
+      <AppSidebar />
+
+      <div className="flex flex-col w-full">
+        <AppHeader />
+        <Suspense>
+          <UserDataWSProvider listenKey={listenKey}>{children}</UserDataWSProvider>
+        </Suspense>
       </div>
-    </UserDataWSProvider>
+    </div>
   );
 };
 

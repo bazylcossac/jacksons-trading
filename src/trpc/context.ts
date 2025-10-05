@@ -1,5 +1,5 @@
 import { authClient } from "@/lib/auth-client";
-import { inferAsyncReturnType } from "@trpc/server";
+import type { inferAsyncReturnType } from "@trpc/server";
 
 export async function createContext() {
   return {

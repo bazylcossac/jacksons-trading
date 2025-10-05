@@ -2,8 +2,8 @@
 
 import useUserDataBear from "@/store/User/UserData.bear";
 import { useUserDataWS } from "@/WebSockets/useUserDataWS";
-import { createContext, PropsWithChildren, useEffect } from "react";
-import { SendMessage } from "react-use-websocket";
+import { createContext, type PropsWithChildren, useEffect } from "react";
+import type { SendMessage } from "react-use-websocket";
 
 type UserDataWSValues = {
   sendMessage: SendMessage;
@@ -13,7 +13,7 @@ type UserDataWSProvider = {
   listenKey: string;
 };
 
-const UserDataWS = createContext<UserDataWSValues>(null);
+const UserDataWS = createContext<UserDataWSValues | null>(null);
 
 export const UserDataWSProvider = ({
   children,

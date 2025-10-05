@@ -1,6 +1,6 @@
 "use client";
-import BREAKPOINTS from "@/constants/breakpoints";
 
+import BREAKPOINTS from "@/constants/breakpoints";
 import { useEffect, useState } from "react";
 
 const useDevice = () => {

@@ -1,5 +1,5 @@
 "use client";
-// TODO add loading skeleton | zmienic nazwe period card
+
 import useFavouriteCryptoBear from "@/store/Crypto/FavouriteCrypto/favouriteCrypto.bear";
 import PeriodCryptoCard from "../../user/PeriodCryptoCard";
 

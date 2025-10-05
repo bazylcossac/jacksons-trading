@@ -1,5 +1,5 @@
 import { Input } from "@/components/ui/input";
-import { Control, FieldValues, Path, useController } from "react-hook-form";
+import { type Control, type FieldValues, type Path, useController } from "react-hook-form";
 import PasswordHoverCard from "./PasswordHoverCard";
 
 type PasswordInput<T extends FieldValues> = {

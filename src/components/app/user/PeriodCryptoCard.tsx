@@ -8,14 +8,12 @@ type UserPorfilPeriodCard = {
 };
 
 const PeriodCryptoCard = ({ openPrice, periodTime, currentPrice }: UserPorfilPeriodCard) => {
-  if (!openPrice || !currentPrice) return;
-
   const periodAmount = useMemo(() => {
     const percent = ((Number(currentPrice) - Number(openPrice)) / Number(openPrice)) * 100;
 
     if (percent > 0) return `+${percent.toFixed(2)}`;
     return percent.toFixed(2).toString();
-  }, [openPrice]);
+  }, [openPrice, currentPrice]);
 
   return (
     <div

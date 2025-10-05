@@ -1,5 +1,5 @@
 "use client";
-import { Login, LoginSchema } from "@/@types/app/login";
+import { type Login, LoginSchema } from "@/@types/app/login";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -27,12 +27,13 @@ const LoginForm = () => {
   });
 
   const loginCredentials = async (userData: Login) => {
+    const { email, password, rememberMe } = userData;
     await authClient.signIn.email(
       {
-        email: userData.email,
-        password: "testpassword",
+        email,
+        password,
         callbackURL: "/dashboard",
-        rememberMe: userData.rememberMe,
+        rememberMe,
       },
       {
         onSuccess: () => {
@@ -41,6 +42,7 @@ const LoginForm = () => {
         onRequest: () => setShowLoading(true),
         onError: (error) => {
           toast.error(error.error.message);
+          console.log(error);
           setShowLoading(false);
         },
       }

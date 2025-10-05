@@ -12,7 +12,7 @@ const LoginPage = () => {
       <LoginForm />
       <div className="absolute bottom-2 right-2">
         <Link href="/register" className="text-xs underline text-black/60">
-          Don't have account?
+          Don&apos;t have account?
         </Link>
       </div>
     </div>

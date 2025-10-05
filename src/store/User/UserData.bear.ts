@@ -1,5 +1,6 @@
 import { produce } from "immer";
 import { create } from "zustand";
+
 type UserDataInitValues = {
   listenKey: string;
 };

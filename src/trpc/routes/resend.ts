@@ -19,7 +19,7 @@ export const resendRouter = router({
       const { firstName, email, text, userImage } = input;
 
       try {
-        const { data, error } = await resend.emails.send({
+        const { data } = await resend.emails.send({
           from: process.env.RESEND_APP_EMAIL!,
           to: [email],
           subject: "Verify your email",

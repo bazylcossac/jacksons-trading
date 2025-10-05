@@ -1,6 +1,5 @@
 import AuthPageImage from "@/components/app/AuthPageImage";
 import RegisterForm from "@/components/app/register/RegisterForm";
-
 import Link from "next/link";
 
 const RegisterPage = () => {

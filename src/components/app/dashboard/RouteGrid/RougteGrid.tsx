@@ -1,6 +1,6 @@
 import RouteGridElement from "./RouteGridElement";
 
-const RouteGrid = () => {
+const RouteGrid = async () => {
   return (
     <>
       <RouteGridElement title="Investments Plans" href="/" classNames="bg-popover" />
