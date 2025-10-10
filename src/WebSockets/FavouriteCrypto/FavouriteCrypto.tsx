@@ -10,8 +10,8 @@ export const useFavouriteCrypto = () => {
     if (!safeData.success) return;
 
     useFavouriteCryptoBear.getState().setFavouriteTickerCrypto(safeData.data);
-  };
 
+  };
   const methods = useWebsocket({
     websocketUrl: `${USER_DATA_WS_V3}btcusdt@ticker`,
     onMessage: onMessage,

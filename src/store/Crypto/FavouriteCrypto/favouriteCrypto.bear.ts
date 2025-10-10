@@ -10,7 +10,7 @@ type FavouriteCryptoActions = {
   setFavouriteTickerCrypto: (tickerCrypto: TickerSchema) => void;
 };
 
-type FavouriteTickerCryptoBear = FavouriteTickerCrypto & FavouriteCryptoActions;
+export type FavouriteTickerCryptoBear = FavouriteTickerCrypto & FavouriteCryptoActions;
 
 const initValues: FavouriteTickerCrypto = {
   tickerCrypto: null,
