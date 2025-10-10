@@ -3,7 +3,8 @@ import { type Login, LoginSchema } from "@/@types/app/login";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
-import { authClient } from "@/lib/auth-client";
+
+import { signIn } from "@/lib/auth-client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useState } from "react";
@@ -28,7 +29,7 @@ const LoginForm = () => {
 
   const loginCredentials = async (userData: Login) => {
     const { email, password, rememberMe } = userData;
-    await authClient.signIn.email(
+    await signIn.email(
       {
         email,
         password,
@@ -50,7 +51,7 @@ const LoginForm = () => {
   };
 
   const loginGoogle = async () => {
-    await authClient.signIn.social({
+    await signIn.social({
       provider: "google",
       callbackURL: "/dashboard",
       fetchOptions: {

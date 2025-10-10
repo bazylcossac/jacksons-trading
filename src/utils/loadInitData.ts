@@ -1,8 +1,8 @@
-import { authClient } from "@/lib/auth-client";
+import { revokeOtherSessions } from "@/lib/auth-client";
 
 const loadInitData = () => {
   try {
-    authClient.revokeOtherSessions();
+    revokeOtherSessions();
   } catch (error) {
     console.error("Failed to fetch", error);
   }

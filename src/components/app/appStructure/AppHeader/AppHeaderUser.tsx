@@ -2,16 +2,23 @@
 import CorePopover from "@/components/CoreComponents/popover";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { authClient } from "@/lib/auth-client";
+import { signOut, useSession } from "@/lib/auth-client";
+
 import Image from "next/image";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/router";
 
 const AppHeaderUser = () => {
-  const { data } = authClient.useSession();
+  const { data } = useSession();
+  const router = useRouter();
 
   const handleLogout = async () => {
-    await authClient.signOut();
-    redirect("/login");
+    await signOut({
+      fetchOptions: {
+        onSuccess: () => {
+          router.push("/login");
+        },
+      },
+    });
   };
 
   return (

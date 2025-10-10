@@ -2,7 +2,8 @@
 import { type Register, RegisterSchema } from "@/@types/app/register";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { authClient } from "@/lib/auth-client";
+
+import { signUp } from "@/lib/auth-client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -24,7 +25,7 @@ const RegisterForm = () => {
   });
 
   const submitAction = async (userData: Register) => {
-    await authClient.signUp.email(
+    await signUp.email(
       {
         email: userData.email,
         password: userData.password,

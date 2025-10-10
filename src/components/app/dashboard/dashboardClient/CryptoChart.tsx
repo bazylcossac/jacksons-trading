@@ -53,6 +53,7 @@ export default function CryptoChart() {
     });
 
     chart.timeScale().scrollToRealTime();
+    chart.timeScale().fitContent();
 
     chartRef.current = chart;
     seriesRef.current = candlestickSeries;
