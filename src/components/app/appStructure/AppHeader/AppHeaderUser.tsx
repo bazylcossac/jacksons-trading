@@ -10,7 +10,7 @@ const AppHeaderUser = () => {
   const { data } = authClient.useSession();
 
   const handleLogout = async () => {
-    authClient.signOut();
+    await authClient.signOut();
     redirect("/login");
   };
 
